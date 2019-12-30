@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.sdrss.zomatocloneapp.data.remote.response.search.Restaurant" />
+
+        <variable
+            name="vm"
+            type="com.sdrss.zomatocloneapp.ui.dashboard.DashboardViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/tvRestName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="top"
+            android:maxLines="1"
+            android:text='@{item.restaurant.name}'
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/tvReviewCount"
+            app:layout_constraintHorizontal_bias=".5"
+            app:layout_constraintStart_toEndOf="@+id/cvPhotoThumb"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Restaurant Name" />
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cvPhotoThumb"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            app:cardCornerRadius="5dp"
+            app:cardElevation="2dp"
+            app:contentPadding="0dp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvAverageCostForTwo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvRestName"
+            app:layout_constraintVertical_bias="0.50"
+            app:srcCompat="@android:drawable/ic_menu_report_image">
+
+            <ImageView
+                android:id="@+id/ivPhotoThumb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"
+                android:scaleType="fitXY"
+                app:loadImage='@{item.restaurant.thumb}' />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/tvCuisines"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text='@{item.restaurant.cuisines}'
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvRestName"
+            app:layout_constraintStart_toStartOf="@+id/tvRestName"
+            app:layout_constraintTop_toBottomOf="@+id/tvRestName"
+            tools:text="Cuisines" />
+
+        <TextView
+            android:id="@+id/tvAverageCostForTwo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text='@{item.restaurant.currency+item.restaurant.average_cost_for_two+" per person"}'
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvCuisines"
+            app:layout_constraintStart_toStartOf="@+id/tvCuisines"
+            app:layout_constraintTop_toBottomOf="@+id/tvCuisines"
+            tools:text="Average Cost For Two Person" />
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@color/grey"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text='@{item.restaurant.user_rating.aggregate_rating}'
+            android:textColor="@color/white"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/tvReviewCount"
+            app:layout_constraintStart_toStartOf="@+id/tvReviewCount"
+            app:layout_constraintTop_toTopOf="@+id/tvRestName"
+            app:setBackgroundColor='@{item.restaurant.user_rating.rating_color}'
+            tools:text="4.2" />
+
+        <TextView
+            android:id="@+id/tvReviewCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:gravity="center"
+            android:text='@{item.restaurant.all_reviews_count+"\n"+"Reviews"}'
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvRating"
+            tools:text="30459\nReviews" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:alpha="0.7"
+            android:background="@color/grey"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvAverageCostForTwo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

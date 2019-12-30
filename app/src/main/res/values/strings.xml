@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">ZomatoCloneApp</string>
+    <string name="search_hint">Search for City or Locations</string>
+    <string name="your_location_text">Your Location</string>
+    <string name="enter_your_location">Enter Your Location</string>
+    <string name="location_suggestions_text">Location Suggestions</string>
+    <string name="use_my_current_location_text">Use My Current Location</string>
+    <string name="mumbai">Mumbai</string>
+    <string name="no_internet_connection_available">Opp\'s No Internet Connection Available.\nPlease Connect To The Internet And Try Again.</string>
+</resources>
