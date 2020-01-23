@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import com.sdrss.zomatocloneapp.R
 import com.sdrss.zomatocloneapp.binding.BindingFragment
 import com.sdrss.zomatocloneapp.databinding.DashboardFragmentBinding
-import com.sdrss.zomatocloneapp.utils.isConnectedToNetwork
+import com.sdrss.zomatocloneapp.utils.isOnline
 import kotlinx.android.synthetic.main.dashboard_fragment.*
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 
@@ -30,7 +30,7 @@ class DashboardFragment : BindingFragment<DashboardFragmentBinding>() {
 
         //loadData
         context?.let {
-            if (it.isConnectedToNetwork()) {
+            if (it.isOnline()) {
                 vm?.isInternetAvailable?.set(true)
                 vm?.doSearch()
             } else {
